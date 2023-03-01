@@ -1,22 +1,8 @@
-import { useState, useEffect } from "react";
-import finnHub from "../apis/finnHub";
+import { useLoaderData } from "react-router-dom";
 
-export const StockData = ({ symbol }) => {
-  const [stockData, setStockData] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await finnHub.get("/stock/profile2", {
-          params: { symbol },
-        });
-        setStockData(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, [symbol]);
+export const StockData = () => {
+  const { result } = useLoaderData();
+  const stockData = result.data;
 
   return (
     <div>

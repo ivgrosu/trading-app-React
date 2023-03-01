@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import Chart from "react-apexcharts";
 
-export const StockChart = ({ chartData, symbol }) => {
+export const StockChart = () => {
   const [dateFormat, setDateFormat] = useState("24h");
+  const { symbol } = useParams();
+  const { chartData } = useLoaderData();
   const { day, week, year } = chartData;
 
   const determineTimeFormat = () => {
@@ -24,7 +27,6 @@ export const StockChart = ({ chartData, symbol }) => {
     0
       ? "#26C281"
       : "#ED3419";
-
   const options = {
     colors: [color],
     title: {
@@ -70,6 +72,7 @@ export const StockChart = ({ chartData, symbol }) => {
   return (
     <div className="mt-5 p-4 shadow-sm bg-white">
       <Chart options={options} series={series} type="area" width="100%" />
+
       <div>
         <button
           className={renderButtonSelect("24h")}

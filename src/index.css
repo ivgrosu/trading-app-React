@@ -1,0 +1,22 @@
+body {
+  background-color: #ebe7e7;
+}
+
+.delete-button {
+  opacity: 0.3;
+  display: inline-block;
+}
+
+.table-row:hover .delete-button {
+  opacity: 1;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #443c3c;
+}
+
